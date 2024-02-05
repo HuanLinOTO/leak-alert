@@ -4,9 +4,13 @@ import { Client } from '@koishijs/plugin-console'
 
 export const name = 'leak-alert'
 
-export interface Config { }
+export interface Config {
+  useYellowWebsiteLiked: boolean 
+}
 
-export const Config: Schema<Config> = Schema.object({})
+export const Config: Schema<Config> = Schema.object({
+  useYellowWebsiteLiked: Schema.boolean().default(false).description("使用如同黄色网站般的提示"),
+})
 
 export async function apply(ctx: Context) {
   if (!ctx.inject) { ctx.inject = ctx.using }
